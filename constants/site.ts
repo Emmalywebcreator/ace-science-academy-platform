@@ -11,12 +11,26 @@ export const siteConfig = {
     target: "SS1 • SS2 • SS3",
   },
 
-  pricing: {
-    single: "₦5,000",
-    bundle: "₦12,000",
-    earlyBird: "₦10,000",
+ pricing: {
+  single: {
+    title: "Single Subject",
+    price: "₦5,000",
+    description: "Choose Mathematics, Physics or Chemistry.",
   },
 
+  bundle: {
+    title: "Science Bundle",
+    price: "₦12,000",
+    description: "All three subjects and save ₦3,000.",
+    popular: true,
+  },
+
+  earlyBird: {
+    title: "Early Bird Offer",
+    price: "₦10,000",
+    description: "Register before July 12, 2026.",
+  },
+},
   contact: {
     phone: "+234 905 523 2108",
     whatsapp: "+234 703 930 1841",
