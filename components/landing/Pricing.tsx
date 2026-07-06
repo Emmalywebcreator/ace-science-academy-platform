@@ -1,6 +1,7 @@
 import { siteConfig } from "@/constants/site";
 import { CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
 
 const plans = Object.values(siteConfig.pricing);
 
@@ -59,7 +60,8 @@ export default function Pricing() {
                 </li>
               </ul>
               <div className="mt-auto pt-8">
-                <button
+                <Button
+                  href="/register"
                   className={`w-full rounded-lg py-3 font-semibold transition ${
                     plan.popular
                       ? "bg-yellow-400 text-slate-900 hover:bg-yellow-300"
@@ -67,7 +69,7 @@ export default function Pricing() {
                   }`}
                 >
                   Enroll Now
-                </button>
+                </Button>
               </div>
             </div>
           ))}

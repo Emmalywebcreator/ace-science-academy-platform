@@ -21,7 +21,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="#register">
+            <Button href="/register">
               Register Now
           </Button>
 

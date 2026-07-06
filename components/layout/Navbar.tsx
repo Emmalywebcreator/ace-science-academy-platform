@@ -22,7 +22,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Button href="#register">
+        <Button href="/register">
           Register Now
         </Button>
       </div>
