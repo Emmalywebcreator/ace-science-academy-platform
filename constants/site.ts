@@ -16,6 +16,7 @@ export const siteConfig = {
     title: "Single Subject",
     price: "₦5,000",
     description: "Choose Mathematics, Physics or Chemistry.",
+    popular: false,
   },
 
   bundle: {
@@ -29,6 +30,7 @@ export const siteConfig = {
     title: "Early Bird Offer",
     price: "₦10,000",
     description: "Register before July 12, 2026.",
+    popular: false,
   },
 },
   contact: {

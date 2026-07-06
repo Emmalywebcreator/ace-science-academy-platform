@@ -1,14 +1,17 @@
+import { CheckCircle } from "lucide-react";
+import Button from "@/components/ui/Button";
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-yellow-50 py-20">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-6 lg:flex-row">
+    <section className="bg-gradient-to-br from-blue-50 via-white to-yellow-50 py-12">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.4fr_1fr]">
         {/* Left Content */}
         <div className="flex-1">
           <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-700">
             Registration: July 7 – July 18, 2026
           </span>
 
-          <h1 className="mt-6 text-5xl font-extrabold leading-tight text-blue-900">
+          {/* <h1 className="mt-6 text-5xl font-extrabold leading-tight text-blue-900"> */}
+          <h1 className="mt-6 text-6xl font-bold leading-[1.1] text-blue-900">
             Holiday Science Intensive Programme 2026
           </h1>
 
@@ -18,20 +21,32 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#register"
-              className="rounded-lg bg-blue-700 px-6 py-4 font-semibold text-white hover:bg-blue-800"
-            >
+            <Button href="#register">
               Register Now
-            </a>
+          </Button>
 
-            <a
-              href="#pricing"
-              className="rounded-lg border border-blue-700 px-6 py-4 font-semibold text-blue-700 hover:bg-blue-50"
-            >
-              View Fees
-            </a>
-          </div>
+          <Button
+            href="#pricing"
+            variant="secondary">
+            View Fees
+          </Button>
+          <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-600">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span>Live Online Classes</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span>WAEC • NECO • JAMB Focus</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span>Limited Class Size</span>
+              </div>
+            </div>
+            </div>
         </div>
 
         {/* Right Card */}

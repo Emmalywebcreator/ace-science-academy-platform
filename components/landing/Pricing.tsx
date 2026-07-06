@@ -1,5 +1,6 @@
 import { siteConfig } from "@/constants/site";
 import { CheckCircle } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const plans = Object.values(siteConfig.pricing);
 
@@ -8,28 +9,23 @@ export default function Pricing() {
     <section id="pricing" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-6">
 
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-blue-900">
-            Choose Your Plan
-          </h2>
-
-          <p className="mt-4 text-lg text-slate-600">
-            Affordable pricing with maximum value.
-          </p>
-        </div>
+        <SectionHeading 
+          title="Choose Your Plan"
+          subtitle="Affordable and flexible options for every student."
+        />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.title}
-              className={`rounded-2xl border p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
+              className={`relative flex h-full flex-col rounded-2xl border p-8 shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${
                 plan.popular
                   ? "border-blue-700 bg-blue-700 text-white"
                   : "border-slate-200 bg-white"
               }`}
             >
               {plan.popular && (
-                <span className="rounded-full bg-yellow-400 px-3 py-1 text-sm font-bold text-slate-900">
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400 px-3 py-1 text-sm font-bold text-slate-900 shadow-md tracking-wide">
                   MOST POPULAR
                 </span>
               )}
@@ -62,16 +58,17 @@ export default function Pricing() {
                   Recorded Lessons
                 </li>
               </ul>
-
-              <button
-                className={`mt-10 w-full rounded-lg py-3 font-semibold transition ${
-                  plan.popular
-                    ? "bg-yellow-400 text-slate-900 hover:bg-yellow-300"
-                    : "bg-blue-700 text-white hover:bg-blue-800"
-                }`}
-              >
-                Enroll Now
-              </button>
+              <div className="mt-auto pt-8">
+                <button
+                  className={`w-full rounded-lg py-3 font-semibold transition ${
+                    plan.popular
+                      ? "bg-yellow-400 text-slate-900 hover:bg-yellow-300"
+                      : "bg-blue-700 text-white hover:bg-blue-800"
+                  }`}
+                >
+                  Enroll Now
+                </button>
+              </div>
             </div>
           ))}
         </div>

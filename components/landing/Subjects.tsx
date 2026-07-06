@@ -1,5 +1,6 @@
 import { subjects } from "@/constants/subjects";
 import { CheckCircle } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Subjects() {
   return (
@@ -7,16 +8,10 @@ export default function Subjects() {
       id="subjects"
       className="bg-slate-50 py-20"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-blue-900">
-            Subjects Offered
-          </h2>
-
-          <p className="mt-4 text-lg text-slate-600">
-            Master the core science subjects with an exam-focused approach.
-          </p>
-        </div>
+      <SectionHeading
+        title="Subjects Offered"
+        subtitle="Master the core science subjects with an exam-focused approach."
+      />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
           {subjects.map((subject) => {
@@ -25,7 +20,7 @@ export default function Subjects() {
             return (
               <div
                 key={subject.title}
-                className="rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
               >
                 <div className="flex items-center justify-between">
                   <Icon
@@ -71,7 +66,6 @@ export default function Subjects() {
             );
           })}
         </div>
-      </div>
     </section>
   );
 }
