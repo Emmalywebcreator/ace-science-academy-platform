@@ -1,5 +1,6 @@
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
+import SubjectSelection from "./SubjectSelection";
 
 export default function RegistrationForm() {
   return (
@@ -76,7 +77,7 @@ export default function RegistrationForm() {
           Subject Selection
         </h2>
 
-        Subject selection coming next...
+        <SubjectSelection />
       </section>
 
     </form>
