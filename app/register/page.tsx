@@ -1,3 +1,5 @@
+import RegistrationForm from "@/components/forms/RegistrationForm";
+
 export default function RegisterPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-4xl flex-col px-6 py-16">
@@ -13,7 +15,7 @@ export default function RegisterPage() {
       </div>
 
       <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
-        Registration form coming next...
+        <RegistrationForm />
       </div>
     </main>
   );
