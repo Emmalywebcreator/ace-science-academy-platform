@@ -1,31 +1,17 @@
-import { Calculator, Atom, FlaskConical, Star } from "lucide-react";
+"use client";
 
-const subjects = [
-  {
-    title: "Mathematics",
-    price: "₦5,000",
-    icon: Calculator,
-  },
-  {
-    title: "Physics",
-    price: "₦5,000",
-    icon: Atom,
-  },
-  {
-    title: "Chemistry",
-    price: "₦5,000",
-    icon: FlaskConical,
-  },
-  {
-    title: "Science Bundle",
-    price: "₦12,000",
-    save: "Save ₦3,000",
-    icon: Star,
-    recommended: true,
-  },
-];
+import { useState } from "react";
+import { subjects } from "@/lib/pricing";
+import {
+  Calculator,
+  Atom,
+  FlaskConical,
+  Star,
+  CheckCircle,
+} from "lucide-react";
 
 export default function SubjectSelection() {
+    const [selected, setSelected] = useState<string[]>([]);
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {subjects.map((subject) => {
@@ -33,18 +19,47 @@ export default function SubjectSelection() {
 
         return (
           <div
-            key={subject.title}
+            key={subject.id}
+            onClick={() => {
+                if (subject.id === "bundle") {
+                  if (selected.includes("bundle")) {
+                    setSelected([]);
+                  } else {
+                    setSelected(["bundle"]);
+                  }
+                  return;
+                }
+
+            setSelected((prev) => {
+              const withoutBundle = prev.filter(
+                (item) => item !== "bundle"
+              );
+
+              if (withoutBundle.includes(subject.id)) {
+                return withoutBundle.filter(
+                  (item) => item !== subject.id
+                );
+              }
+              return [...withoutBundle, subject.id];
+            })
+          }}
             className={`relative cursor-pointer rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-              subject.recommended
-                ? "border-blue-700 bg-blue-50"
-                : "border-slate-200 bg-white"
-            }`}
+            selected.includes(subject.id)
+              ? "border-green-600 bg-green-50"
+              : subject.recommended
+              ? "border-blue-700 bg-blue-50"
+              : "border-slate-200 bg-white"
+          }`}
           >
             {subject.recommended && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold">
                 RECOMMENDED
               </span>
             )}
+
+            {selected.includes(subject.id) && (
+            <CheckCircle className="absolute right-4 top-4 h-6 w-6 text-green-600" />
+          )}
 
             <Icon className="mb-4 h-10 w-10 text-blue-700" />
 
@@ -53,13 +68,12 @@ export default function SubjectSelection() {
             </h3>
 
             <p className="mt-2 text-2xl font-bold text-blue-700">
-              {subject.price}
-            </p>
+                ₦{subject.price.toLocaleString()}            </p>
 
             {subject.save && (
               <p className="mt-2 text-sm font-semibold text-green-600">
-                {subject.save}
-              </p>
+                Save ₦{subject.save.toLocaleString()}             
+             </p>
             )}
           </div>
         );
