@@ -1,4 +1,12 @@
-import { programmeFeatures } from "@/constants/programmeFeatures";
+const programmeFeatures = [
+  "Live Online Classes",
+  "Weekly Assignments & Quizzes",
+  "WAEC & NECO Past Questions",
+  "JAMB Preparation",
+  "Recorded Lessons",
+  "Performance Tracking",
+  "Interactive Problem-Solving Sessions",
+];
 
 export default function ProgrammeFeatures() {
   return (

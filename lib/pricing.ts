@@ -9,27 +9,33 @@ export const SUBJECT_PRICE = 5000;
 export const BUNDLE_PRICE = 12000;
 export const EARLY_BIRD_PRICE = 10000;
 
+export const SUBJECT_IDS = {
+  MATHEMATICS: "mathematics",
+  PHYSICS: "physics",
+  CHEMISTRY: "chemistry",
+  BUNDLE: "bundle",
+} as const;
 export const subjects = [
   {
-    id: "mathematics",
+    id: SUBJECT_IDS.MATHEMATICS,
     title: "Mathematics",
     price: SUBJECT_PRICE,
     icon: Calculator,
   },
   {
-    id: "physics",
+    id: SUBJECT_IDS.PHYSICS,
     title: "Physics",
     price: SUBJECT_PRICE,
     icon: Atom,
   },
   {
-    id: "chemistry",
+    id: SUBJECT_IDS.CHEMISTRY,
     title: "Chemistry",
     price: SUBJECT_PRICE,
     icon: FlaskConical,
   },
   {
-    id: "bundle",
+    id: SUBJECT_IDS.BUNDLE,
     title: "Science Bundle",
     price: BUNDLE_PRICE,
     save: 3000,

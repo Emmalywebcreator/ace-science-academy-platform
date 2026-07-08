@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { subjects } from "@/lib/pricing";
+import { subjects, SUBJECT_IDS } from "@/lib/pricing";
 import {
   Calculator,
   Atom,
@@ -21,18 +21,18 @@ export default function SubjectSelection() {
           <div
             key={subject.id}
             onClick={() => {
-                if (subject.id === "bundle") {
-                  if (selected.includes("bundle")) {
+                if (subject.id === SUBJECT_IDS.BUNDLE) {
+                  if (selected.includes(SUBJECT_IDS.BUNDLE)) {
                     setSelected([]);
                   } else {
-                    setSelected(["bundle"]);
+                    setSelected([SUBJECT_IDS.BUNDLE]);
                   }
                   return;
                 }
 
             setSelected((prev) => {
               const withoutBundle = prev.filter(
-                (item) => item !== "bundle"
+                (item) => item !== SUBJECT_IDS.BUNDLE
               );
 
               if (withoutBundle.includes(subject.id)) {
