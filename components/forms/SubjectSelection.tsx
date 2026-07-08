@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { subjects, SUBJECT_IDS } from "@/lib/pricing";
 import {
   Calculator,
@@ -10,8 +9,15 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-export default function SubjectSelection() {
-    const [selected, setSelected] = useState<string[]>([]);
+type SubjectSelectionProps = {
+  selectedSubjects: string[];
+  setSelectedSubjects: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+export default function SubjectSelection({
+  selectedSubjects,
+  setSelectedSubjects,
+}: SubjectSelectionProps) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {subjects.map((subject) => {
@@ -22,15 +28,15 @@ export default function SubjectSelection() {
             key={subject.id}
             onClick={() => {
                 if (subject.id === SUBJECT_IDS.BUNDLE) {
-                  if (selected.includes(SUBJECT_IDS.BUNDLE)) {
-                    setSelected([]);
+                  if (selectedSubjects.includes(SUBJECT_IDS.BUNDLE)) {
+                    setSelectedSubjects([]);
                   } else {
-                    setSelected([SUBJECT_IDS.BUNDLE]);
+                    setSelectedSubjects([SUBJECT_IDS.BUNDLE]);
                   }
                   return;
                 }
 
-            setSelected((prev) => {
+            setSelectedSubjects((prev) => {
               const withoutBundle = prev.filter(
                 (item) => item !== SUBJECT_IDS.BUNDLE
               );
@@ -44,7 +50,7 @@ export default function SubjectSelection() {
             })
           }}
             className={`relative cursor-pointer rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-            selected.includes(subject.id)
+            selectedSubjects.includes(subject.id)
               ? "border-green-600 bg-green-50"
               : subject.recommended
               ? "border-blue-700 bg-blue-50"
@@ -57,7 +63,7 @@ export default function SubjectSelection() {
               </span>
             )}
 
-            {selected.includes(subject.id) && (
+            {selectedSubjects.includes(subject.id) && (
             <CheckCircle className="absolute right-4 top-4 h-6 w-6 text-green-600" />
           )}
 

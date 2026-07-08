@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
+import RegistrationSummary from "./RegistrationSummary";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import SubjectSelection from "./SubjectSelection";
 
 export default function RegistrationForm() {
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+  // console.log("RegistrationForm:", selectedSubjects);
   return (
     <form className="space-y-10">
 
@@ -77,8 +83,17 @@ export default function RegistrationForm() {
           Subject Selection
         </h2>
 
-        <SubjectSelection />
+      <SubjectSelection
+        selectedSubjects={selectedSubjects}
+        setSelectedSubjects={setSelectedSubjects}
+      />      
       </section>
+      <RegistrationSummary
+        selectedSubjects={selectedSubjects}
+      />
+      {/* <pre className="rounded bg-gray-100 p-4">
+  {JSON.stringify(selectedSubjects, null, 2)}
+</pre> */}
 
     </form>
   );
