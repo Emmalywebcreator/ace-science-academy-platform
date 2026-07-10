@@ -1,17 +1,17 @@
-type InputProps = {
+import type { InputHTMLAttributes } from "react";
+
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
+  error?: string;
 };
 
 export default function Input({
   label,
   name,
-  type = "text",
-  placeholder = "",
   required = false,
+  className = "",
+  error,
+  ...props
 }: InputProps) {
   return (
     <div className="space-y-2">
@@ -24,12 +24,17 @@ export default function Input({
       </label>
 
       <input
+        {...props}
         id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+        className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 ${
+          error
+        ? "border-red-500 focus:border-red-500 focus:ring-red-200"
+        : "border-slate-300 focus:border-blue-700 focus:ring-blue-200"
+    } ${className}`}
       />
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
     </div>
   );
 }

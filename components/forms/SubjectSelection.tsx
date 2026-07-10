@@ -67,11 +67,13 @@ export default function SubjectSelection({
             <CheckCircle className="absolute right-4 top-4 h-6 w-6 text-green-600" />
           )}
 
-            <Icon className="mb-4 h-10 w-10 text-blue-700" />
+            <div className="mb-4 flex items-center gap-3">
+              <Icon className="h-8 w-8 text-blue-700" />
 
-            <h3 className="text-xl font-bold text-slate-900">
-              {subject.title}
-            </h3>
+              <h3 className="text-xl font-bold text-slate-900">
+                {subject.title}
+              </h3>
+            </div>
 
             <p className="mt-2 text-2xl font-bold text-blue-700">
                 ₦{subject.price.toLocaleString()}            </p>

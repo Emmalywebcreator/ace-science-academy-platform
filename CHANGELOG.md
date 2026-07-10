@@ -9,7 +9,7 @@ The format is inspired by Keep a Changelog.
 ## [Unreleased]
 
 ### Planned
-- Live registration summary
+- Live registration summary(Done)
 - Form validation with React Hook Form + Zod
 - Supabase integration
 - Paystack payment integration
@@ -34,12 +34,18 @@ The format is inspired by Keep a Changelog.
 - Parent information form
 - Subject selection cards
 - Reusable project folder structure
+- Live registration summary
+- Dynamic subject selection
+- Registration price calculator
+- Shared React state between form components
 
 ### Changed
 - Refactored Hero section layout
 - Centralized pricing configuration into `lib/pricing.ts`
 - Replaced magic strings with `SUBJECT_IDS`
 - Improved responsive spacing and typography
+- Moved pricing calculations into `lib/calculatePrice.ts`
+- Refactored `SubjectSelection` into a controlled component
 
 ### Fixed
 - Duplicate React key warnings
@@ -47,3 +53,6 @@ The format is inspired by Keep a Changelog.
 - Production build errors
 - Subject selection toggle logic
 - Science Bundle selection behavior
+- Duplicate React key warnings
+- Subject selection state synchronization
+- Production build issues

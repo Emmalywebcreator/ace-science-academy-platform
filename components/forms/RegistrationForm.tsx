@@ -1,6 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import {
+  registrationSchema,
+  type RegistrationData,
+} from "@/lib/validation";
 import RegistrationSummary from "./RegistrationSummary";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -8,9 +15,29 @@ import SubjectSelection from "./SubjectSelection";
 
 export default function RegistrationForm() {
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+  const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<RegistrationData>({
+  resolver: zodResolver(registrationSchema),
+  defaultValues: {
+    studentName: "",
+    schoolName: "",
+    class: "SS1",
+    parentName: "",
+    phone: "",
+    whatsapp: "",
+    email: "",
+    subjects: [],
+  },
+});
+const onSubmit = (data: RegistrationData) => {
+  console.log(data);
+};
   // console.log("RegistrationForm:", selectedSubjects);
   return (
-    <form className="space-y-10">
+    <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
 
       <section>
         <h2 className="mb-6 text-2xl font-bold text-blue-900">
@@ -20,11 +47,11 @@ export default function RegistrationForm() {
         <div className="grid gap-6 md:grid-cols-2">
           <Input
             label="Student Full Name"
-            name="studentName"
             placeholder="Enter student's full name"
             required
+            error={errors.studentName?.message}
+            {...register("studentName")}
           />
-
           <Input
             label="School Name"
             name="schoolName"
@@ -94,6 +121,12 @@ export default function RegistrationForm() {
       {/* <pre className="rounded bg-gray-100 p-4">
   {JSON.stringify(selectedSubjects, null, 2)}
 </pre> */}
+      <button
+        type="submit"
+        className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800"
+      >
+        Register
+      </button>
 
     </form>
   );
