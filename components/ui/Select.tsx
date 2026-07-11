@@ -1,15 +1,19 @@
-type SelectProps = {
+import type { SelectHTMLAttributes } from "react";
+
+type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string;
-  name: string;
   options: string[];
-  required?: boolean;
+  error?: string;
 };
 
 export default function Select({
   label,
   name,
+  error,
   options,
   required = false,
+  className = "",
+  ...props
 }: SelectProps) {
   return (
     <div className="space-y-2">
@@ -22,10 +26,15 @@ export default function Select({
       </label>
 
       <select
+        {...props}
         id={name}
         name={name}
-        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
-      >
+        className={`w-full rounded-xl border bg-white px-4 py-3 outline-none transition ${
+            error
+              ? "border-red-500 focus:border-red-500 focus:ring-red-200"
+              : "border-slate-300 focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+          } ${className}`}     
+          >
         <option value="">Select an option</option>
 
         {options.map((option) => (
@@ -34,6 +43,11 @@ export default function Select({
           </option>
         ))}
       </select>
+      {error && (
+      <p className="text-sm text-red-600">
+        {error}
+      </p>
+    )}
     </div>
   );
 }
