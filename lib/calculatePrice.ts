@@ -6,7 +6,6 @@ import {
 } from "./pricing";
 
 export function calculatePrice(selectedSubjects: string[]) {
-  // Bundle selected
   if (selectedSubjects.includes(SUBJECT_IDS.BUNDLE)) {
     return {
       subjects: subjects.filter(

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { supabase } from "@/lib/supabase";
 import {
   registrationSchema,
   type RegistrationData,
@@ -12,6 +12,7 @@ import RegistrationSummary from "./RegistrationSummary";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import SubjectSelection from "./SubjectSelection";
+import { registerStudent } from "@/services/registration.service";
 
 export default function RegistrationForm() {
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
@@ -35,26 +36,37 @@ export default function RegistrationForm() {
     subjects: [],
   },
 });
-
-// const values = watch();
-// console.log("Form Values:", values);
-
 useEffect(() => {
     setValue("subjects", selectedSubjects, {
       shouldValidate: true,
     });
   }, [selectedSubjects, setValue]);
 
-const onSubmit = (data: RegistrationData) => {
-  alert("SUCCESS");
-  console.table(data);
-  };
+
+const onSubmit = async (data: RegistrationData) => {
+  try {
+    const registration = await registerStudent(data);
+
+    console.log("Registration Successful");
+    console.table(registration);
+  } catch (error) {
+    console.log("ERROR TYPE:", typeof error);
+    console.dir(error, { depth: null });
+
+    if (error instanceof Error) {
+      console.log("MESSAGE:", error.message);
+    }
+
+    alert("Registration failed. Check the console.");
+  }
+};
+
+
 
 const OnError = (errors: unknown) => {
   console.log(errors);
   alert("FAILED")
 }
-  // console.log("RegistrationForm:", selectedSubjects);
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit,
       (errors) => {
@@ -158,9 +170,6 @@ const OnError = (errors: unknown) => {
           {errors.subjects.message}
         </p>
       )}
-      {/* <pre className="rounded bg-gray-100 p-4">
-  {JSON.stringify(selectedSubjects, null, 2)}
-</pre> */}
       <button
         type="submit"
         className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800"
