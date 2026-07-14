@@ -8,12 +8,35 @@ The format is inspired by Keep a Changelog.
 
 ## [Unreleased]
 
+
+
 ### Planned
-- Supabase integration
 - Paystack payment integration
 - Admin dashboard
 - Email notifications
 - Student registration confirmation page
+
+---
+## [0.4.0] - 2026-07-14
+
+### Added
+- Supabase database integration
+- Registration service layer
+- End-to-end registration workflow
+- PostgreSQL persistence for student registrations
+- Success feedback after registration submission
+
+### Changed
+- Refactored registration submission to use a dedicated service (`registration.service.ts`)
+- Centralized registration persistence logic outside the form component
+
+### Fixed
+- React Hook Form subject synchronization
+- Registration validation before database submission
+- Supabase Row Level Security (RLS) configuration
+- Added SELECT policy required for `.insert().select().single()`
+- Resolved unauthorized (401) registration requests
+- Fixed database insertion workflow
 
 ---
 

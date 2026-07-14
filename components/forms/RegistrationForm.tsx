@@ -61,8 +61,6 @@ const onSubmit = async (data: RegistrationData) => {
   }
 };
 
-
-
 const OnError = (errors: unknown) => {
   console.log(errors);
   alert("FAILED")

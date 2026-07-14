@@ -103,7 +103,47 @@ Our goal is not simply to help students pass WAEC, NECO, or JAMB, but to prepare
 
 # ✨ Current Features
 
-> 🚧 Active Development
+> 🚧 This project is under active development.
+
+### Completed
+
+- ✅ Responsive Landing Page
+- ✅ Holiday Programme Information
+- ✅ Dynamic Subject Selection
+- ✅ Live Registration Summary
+- ✅ React Hook Form Integration
+- ✅ Zod Form Validation
+- ✅ Reusable Input Components
+- ✅ Reusable Select Component
+- ✅ Centralized Pricing System
+- ✅ Supabase Database Integration
+- ✅ End-to-End Student Registration
+- ✅ PostgreSQL Data Persistence
+
+## 🚀 Development Progress
+
+| Sprint | Status |
+|---------|--------|
+| Sprint 1 — Landing Page | ✅ Completed |
+| Sprint 2 — Registration UI | ✅ Completed |
+| Sprint 3 — Form Validation | ✅ Completed |
+| Sprint 4 — Supabase Integration | ✅ Completed |
+| Sprint 5 — Payment Integration | 🚧 In Progress |
+
+### In Progress
+
+- ⏳ Paystack Payment Integration
+
+### Planned
+
+- Admin Dashboard
+- Student Dashboard
+- Parent Dashboard
+- Authentication
+- Email Notifications
+- CBT Examination Engine
+- AI Learning Assistant
+- Virtual Science Laboratory
 
 ## Sprint 1 — Landing Page
 
